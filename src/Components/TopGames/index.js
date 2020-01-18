@@ -1,7 +1,7 @@
 import React from 'react';
 import GameCard from '../GameCard'
 
-export default () => {
+export default ({games}) => {
     return (
         <div className="container mt-5">
             <div className='row'>
@@ -9,7 +9,9 @@ export default () => {
                         <h1>TOP 10 GAMES</h1>
                 </div>
 
-                    <GameCard/>
+                {
+                    games.map(el => (<GameCard {...el} key={el.id} />))
+                }
 
             </div>
 

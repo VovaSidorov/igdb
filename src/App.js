@@ -15,15 +15,16 @@ class App extends Component {
       <div className="App">
           <Header/>
           <SearchSection/>
-          <TopGames/>
+          <TopGames games={games}/>
       </div>
       );
   }
     componentDidMount() {
 
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        const zapr ="?fields=screenshots.*,name,popularity,summary&order=popularity:desc";
         const {apiUrl} = this.state;
-        axios.get(proxyurl+apiUrl, {
+        axios.get(proxyurl+apiUrl+zapr, {
                 headers: {
                     "user-key": "e43d1f862600dbac21ab86f17dcec794",
                     Accept: "application/json"
@@ -31,35 +32,11 @@ class App extends Component {
             }
             )
             .then(res=>{
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState({
                     games: [...res.data]
                 })
             })
-
-
-
-        // const {apiUrl} = this.state
-        // axios.get(apiUrl)
-        //     .then(res=>{
-        //         console.log(res.data);
-        //         this.setState({
-        //             games: [...res.data.results]
-        //         })
-        //     })
-
-
-        // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        // const url = "https://api-v3.igdb.com/games"; // site that doesn’t send Access-Control-*
-        // fetch(proxyurl + url,{
-        //     headers: {
-        //         "user-key": "e43d1f862600dbac21ab86f17dcec794",
-        //         Accept: "application/json"
-        //     }
-        // }) // https://cors-anywhere.herokuapp.com/https://example.com
-        //     .then(response => response.text())
-        //     .then(contents => console.log(contents))
-        //     .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
     }
 
 }

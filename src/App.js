@@ -14,17 +14,20 @@ class App extends Component {
       return (
       <div className="App">
           <Header/>
-          <SearchSection foo={this.foo}/>
+          <SearchSection filterGame={this.filterGame}/>
           <TopGames games={games}/>
       </div>
       );
   }
     componentDidMount() {
-
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
         const {apiUrl} = this.state;
+        this.fetchApiData(proxyurl+apiUrl);
+    }
+
+    fetchApiData(apiUrl){
         axios({
-            url: proxyurl+apiUrl,
+            url: apiUrl,
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -42,6 +45,7 @@ class App extends Component {
                 console.error(err);
             });
     }
+
     foo(){
         console.log("FOOOO!!");
     }

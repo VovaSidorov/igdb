@@ -2,7 +2,7 @@ import React from 'react';
 
 export default (props) => {
     const {name,summary,screenshots} = props;
-    const img=props.screenshots[0].image_id;
+    const img=screenshots[0].image_id;
     const urlImage1 = "https://images.igdb.com/igdb/image/upload/t_cover_big/"+img+".jpg";
     return (
         <div className="card col-6 mt-5">

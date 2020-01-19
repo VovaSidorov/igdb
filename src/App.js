@@ -14,7 +14,7 @@ class App extends Component {
       return (
       <div className="App">
           <Header/>
-          <SearchSection/>
+          <SearchSection foo={this.foo}/>
           <TopGames games={games}/>
       </div>
       );
@@ -41,6 +41,9 @@ class App extends Component {
             .catch(err => {
                 console.error(err);
             });
+    }
+    foo(){
+        console.log("FOOOO!!");
     }
 
 }

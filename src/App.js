@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from './Components/Header'
 import SearchSection from './Components/ SearchSection'
 import TopGames from './Components/TopGames'
+import Menu from './Components/Menu'
 import axios from 'axios'
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
       const {games} = this.state;
       return (
       <div className="App">
+          <Menu/>
           <Header/>
           <SearchSection filterGame={this.filterGame}/>
           <TopGames games={games}/>

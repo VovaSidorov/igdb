@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default (props) => {
-    const {name,summary} = props;
+    const {name,summary,screenshots} = props;
     const img=props.screenshots[0].image_id;
     const urlImage1 = "https://images.igdb.com/igdb/image/upload/t_cover_big/"+img+".jpg";
     return (

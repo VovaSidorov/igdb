@@ -22,21 +22,25 @@ class App extends Component {
     componentDidMount() {
 
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        const zapr ="?fields=screenshots.*,name,popularity,summary&order=popularity:desc";
         const {apiUrl} = this.state;
-        axios.get(proxyurl+apiUrl+zapr, {
-                headers: {
-                    "user-key": "e43d1f862600dbac21ab86f17dcec794",
-                    Accept: "application/json"
-                }
-            }
-            )
-            .then(res=>{
-                // console.log(res.data);
+        axios({
+            url: proxyurl+apiUrl,
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'user-key': "e43d1f862600dbac21ab86f17dcec794"
+            },
+            data: "fields screenshots.*,name,popularity,summary; sort popularity desc;"
+        })
+            .then(res => {
+                console.log(res.data);
                 this.setState({
                     games: [...res.data]
                 })
             })
+            .catch(err => {
+                console.error(err);
+            });
     }
 
 }

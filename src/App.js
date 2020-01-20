@@ -3,7 +3,7 @@ import Home from './Components/Home';
 
 import {BrowserRouter, Route} from 'react-router-dom';
 import Menu from "./Components/Menu";
-import GameInfo from './Components/gameInfo';
+import SingleGamePage from './Components/SingleGamePage';
 
 class App extends Component {
 
@@ -12,7 +12,7 @@ class App extends Component {
             <BrowserRouter>
                 <Menu />
                 <Route path="/" exact component={Home}/>
-                <Route path="/game/:id" component={GameInfo}/>
+                <Route path="/game/:id" component={SingleGamePage}/>
             </BrowserRouter>
         );
     }

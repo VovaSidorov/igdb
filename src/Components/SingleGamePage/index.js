@@ -1,31 +1,31 @@
 import React, {Component} from 'react';
-import Header from '../Header'
-import SearchSection from '../SearchSection'
-import TopGames from '../TopGames'
 import axios from 'axios'
 
 export default class Home extends Component {
-    constructor(props){
-        super(props);
-        this.filterGame = this.filterGame.bind(this);
-    }
     state={
         proxyurl:"https://cors-anywhere.herokuapp.com/",
         apiUrl:"https://api-v3.igdb.com/games",
-        apiRequest:"fields id,screenshots.*,name,popularity,summary; sort popularity desc;",
+        apiRequest:"fields id,screenshots.*,name,popularity,summary; where id = 115278;",
         games:[],
     }
-  render() {
-      const {games} = this.state;
-      console.log(games);
-      return (
-      <div className="App">
-          <Header/>
-          <SearchSection filterGame={this.filterGame}/>
-          <TopGames games={games}/>
-      </div>
-      );
-  }
+    
+    render() {
+        const {match:{params}} = this.props;
+        const {games} = this.state;
+    
+
+        return (
+            <div className="card">
+            <div>{ params.id }</div>
+            <img src="..." className="card-img-top" alt="..."/>
+            <div className="card-body">
+            <h5 className="card-title">Card titlsdfsdfsdfsde</h5>
+            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            
+            </div>
+        </div>
+        );
+    }
     componentDidMount() {
         const {proxyurl} = this.state
         const {apiUrl} = this.state;
@@ -53,12 +53,11 @@ export default class Home extends Component {
             });
     }
 
-    filterGame(filterObject){
-        console.log(filterObject.name);
+    filterGame(params){
+        console.log(params.id);
         const {proxyurl} = this.state;
         const {apiUrl} = this.state;
-        const apiRequest = `fields screenshots.*,name,popularity,summary; search \"${filterObject.name}\";`;
+        const apiRequest = `fields screenshots.*,name,popularity,summary; where id = 115278;`;
         this.fetchApiData(proxyurl+apiUrl,apiRequest);
     }
-
 }

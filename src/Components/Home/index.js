@@ -27,7 +27,7 @@ export default class Home extends Component {
       );
   }
     componentDidMount() {
-        const {proxyurl} = this.state
+        const {proxyurl} = this.state;
         const {apiUrl} = this.state;
         const {apiRequest} = this.state;
         this.fetchApiData(proxyurl+apiUrl,apiRequest);
@@ -57,7 +57,7 @@ export default class Home extends Component {
         console.log(filterObject.name);
         const {proxyurl} = this.state;
         const {apiUrl} = this.state;
-        const apiRequest = `fields screenshots.*,name,popularity,summary; search \"${filterObject.name}\";`;
+        const apiRequest = `fields screenshots.*,name,popularity,summary; search "${filterObject.name}";`;
         this.fetchApiData(proxyurl+apiUrl,apiRequest);
     }
 

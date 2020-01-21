@@ -11,8 +11,8 @@ export default (props) => {
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text">{summary}</p>
-                    <Link to={`/game/${id}`}>
-                        <a href="#" className="btn btn-primary stretched-link">More</a>
+                    <Link to={`/game/${id}`} className="btn btn-primary stretched-link">
+                       More
                     </Link>
                 </div>
         </div>
